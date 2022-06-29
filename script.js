@@ -15,4 +15,3 @@ function addBookToLibrary() {
     newBook = new Book(title, author, pageNum);
     myLibrary.push(newBook);
 }
-addBookToLibrary();
