@@ -10,3 +10,29 @@ body {
     justify-content: center;
     background-color: gray;
 }
+
+.middle {
+    display: flex;
+    flex: 1;
+    gap: 25px;
+    height: calc(100vh - 100px);
+    margin: 50px;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
+}
+
+.book-container {
+    border: 2px solid;
+    border-radius: 15%;
+    padding: 10px;
+}
