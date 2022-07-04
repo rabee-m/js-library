@@ -23,8 +23,24 @@ function displayBooks(myLibrary) {
 
     for (let i = 0; i < myLibrary.length; i++) {
         let newBookDiv = document.createElement('div');
-        newBookDiv.classList.add('book-container')
-        newBookDiv.textContent = myLibrary[i].title
+        newBookDiv.classList.add('book-container');
+
+        newBookTitle = document.createElement('span');
+        newBookTitle.classList.add('book-title');
+        newBookTitle.textContent = myLibrary[i].title;
+        newBookDiv.append(newBookTitle);
+
+
+        newBookAuthor = document.createElement('span');
+        newBookAuthor.classList.add('book-author');
+        newBookAuthor.textContent = myLibrary[i].author;
+        newBookDiv.append(newBookAuthor);
+
+        newBookPageNum = document.createElement('span');
+        newBookPageNum.classList.add('book-pageNum');
+        newBookPageNum.textContent = myLibrary[i].pageNum;
+        newBookDiv.append(newBookPageNum);
+
         bookGrid.append(newBookDiv)
     }
 }
