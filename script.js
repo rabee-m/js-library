@@ -1,4 +1,5 @@
 const bookGrid = document.querySelector('.book-grid')
+const addBookBtn = document.querySelector('#add-book-btn')
 let myLibrary = [];
 
 function Book(title, author, pageNum) {
@@ -16,8 +17,6 @@ function addBookToLibrary() {
     newBook = new Book(title, author, pageNum);
     myLibrary.push(newBook);
 }
-
-addBookToLibrary();
 
 function displayBooks(myLibrary) {
 
@@ -44,5 +43,8 @@ function displayBooks(myLibrary) {
         bookGrid.append(newBookDiv)
     }
 }
-
+addBookBtn.addEventListener('click', () => {
+    addBookToLibrary();
+    displayBooks(myLibrary);
+})
 displayBooks(myLibrary);
