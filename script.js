@@ -8,6 +8,7 @@ function Book(title, author, pageNum) {
     this.author = author;
     this.pageNum = pageNum;
     this.isRead = false;
+    this.onDisplay = false;
 }
 
 function addBookToLibrary() {
@@ -18,27 +19,54 @@ function addBookToLibrary() {
     myLibrary.push(newBook);
 }
 
+function removeBook(event, myLibrary) {
+    const button = event.target;
+    let bookIndex = button.parentNode.dataset.index;
+    myLibrary.splice(bookIndex, 1);
+    button.parentNode.remove();    
+}
+
+
 function displayBooks(myLibrary) {
 
     for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].onDisplay) {continue;}
+        myLibrary[i].onDisplay = true;
+
         let newBookDiv = document.createElement('div');
         newBookDiv.classList.add('book-container');
+        newBookDiv.dataset.index = i;
 
-        newBookTitle = document.createElement('span');
+        let newBookTitle = document.createElement('span');
         newBookTitle.classList.add('book-title');
         newBookTitle.textContent = myLibrary[i].title;
         newBookDiv.append(newBookTitle);
 
-
-        newBookAuthor = document.createElement('span');
+        let newBookAuthor = document.createElement('span');
         newBookAuthor.classList.add('book-author');
         newBookAuthor.textContent = myLibrary[i].author;
         newBookDiv.append(newBookAuthor);
 
-        newBookPageNum = document.createElement('span');
+        let newBookPageNum = document.createElement('span');
         newBookPageNum.classList.add('book-pageNum');
         newBookPageNum.textContent = myLibrary[i].pageNum;
         newBookDiv.append(newBookPageNum);
+
+        let newBookRemoveBtn = document.createElement('button');
+        newBookRemoveBtn.classList.add('book-remove-btn');
+        newBookRemoveBtn.textContent = 'Remove Book';
+        newBookRemoveBtn.addEventListener('click', (e) => {
+            removeBook(e, myLibrary);
+        });
+        newBookDiv.append(newBookRemoveBtn);
+        
+        let newBookReadBtn = document.createElement('button');
+        newBookReadBtn.classList.add('book-read-btn');
+        newBookReadBtn.textContent = 'Read Book';
+        newBookReadBtn.addEventListener('click', (e) => {
+            updateBookStatus()
+        });
+        newBookDiv.append(newBookReadBtn);
 
         bookGrid.append(newBookDiv)
     }
