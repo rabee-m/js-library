@@ -31,7 +31,8 @@ function removeBook(event, myLibrary) {
 function updateBookStatus(e, myLibrary) {
     const button = event.target
     let bookIdx = button.parentNode.dataset.index;
-    //change isread status
+
+    //change isread status on object
     myLibrary[bookIdx].isRead ? myLibrary[bookIdx].isRead = false : myLibrary[bookIdx].isRead = true;
    
     //change colour based on read status
