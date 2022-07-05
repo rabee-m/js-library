@@ -15,8 +15,9 @@ body {
     display: flex;
     flex: 1;
     gap: 25px;
-    height: calc(100vh - 100px);
     margin: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .toolbar {
@@ -27,7 +28,7 @@ body {
 
 .book-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 1em;
 }
 
@@ -41,4 +42,5 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: blue;
 }

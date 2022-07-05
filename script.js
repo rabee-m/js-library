@@ -1,6 +1,8 @@
 const bookGrid = document.querySelector('.book-grid')
 const addBookBtn = document.querySelector('#add-book-btn')
 let myLibrary = [];
+let placeholder = new Book('The Hobbit', 'J.RR Tolken', 200);
+myLibrary.push  (placeholder);
 
 function Book(title, author, pageNum) {
     //constructor
@@ -60,7 +62,8 @@ function displayBooks(myLibrary) {
         });
         newBookDiv.append(newBookRemoveBtn);
         
-        let newBookReadBtn = document.createElement('button');
+        let newBookReadBtn = document.createElement('input');
+        newBookReadBtn.type = 'checkbox';
         newBookReadBtn.classList.add('book-read-btn');
         newBookReadBtn.textContent = 'Read Book';
         newBookReadBtn.addEventListener('click', (e) => {
