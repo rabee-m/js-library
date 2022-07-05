@@ -1,2 +1,4 @@
 # js-library
-JavaScript Library app used to reinforce understanding of Objects, Object Constructors, Prototype in JavaScript.
+JavaScript Library we app used to reinforce understanding of objects, object constructors, and prototype attribute in JavaScript.
+
+### Usage
