@@ -28,6 +28,21 @@ function removeBook(event, myLibrary) {
     button.parentNode.remove();    
 }
 
+function updateBookStatus(e, myLibrary) {
+    const button = event.target
+    let bookIdx = button.parentNode.dataset.index;
+    //change isread status
+    myLibrary[bookIdx].isRead ? myLibrary[bookIdx].isRead = false : myLibrary[bookIdx].isRead = true;
+   
+    //change colour based on read status
+    if (myLibrary[bookIdx].isRead) {
+        button.parentNode.classList.remove('unread-book');
+        button.parentNode.classList.add('read-book');
+    } else {
+        button.parentNode.classList.remove('read-book');
+        button.parentNode.classList.add('unread-book');
+    }
+}
 
 function displayBooks(myLibrary) {
 
@@ -37,6 +52,7 @@ function displayBooks(myLibrary) {
 
         let newBookDiv = document.createElement('div');
         newBookDiv.classList.add('book-container');
+        newBookDiv.classList.add('unread-book');
         newBookDiv.dataset.index = i;
 
         let newBookTitle = document.createElement('span');
@@ -64,10 +80,11 @@ function displayBooks(myLibrary) {
         
         let newBookReadBtn = document.createElement('input');
         newBookReadBtn.type = 'checkbox';
-        newBookReadBtn.classList.add('book-read-btn');
-        newBookReadBtn.textContent = 'Read Book';
-        newBookReadBtn.addEventListener('click', (e) => {
-            updateBookStatus()
+        
+
+        newBookReadBtn.classList.add('switch');
+        newBookReadBtn.addEventListener('change', (e) => {
+            updateBookStatus(e, myLibrary);
         });
         newBookDiv.append(newBookReadBtn);
 
